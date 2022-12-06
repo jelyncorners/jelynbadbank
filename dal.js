@@ -2,12 +2,12 @@ require('dotenv').config();
 
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb+srv://admin:iampassword123@cluster0.vjvs0aq.mongodb.net/?retryWrites=true&w=majority';
-let db = null;
+//let db = jelynmongodatabase;
 
 MongoClient.connect(url, function(err, client) {
     console.log('Connected successfully to the db server!');
 
-    db = client.db('jelynmongodatabase');
+    const db = client.db('jelynmongodatabase');
 });
 
 function create(name, email, password) {
@@ -66,9 +66,9 @@ function deposit(user, amount) {
 
 
 function withdraw (user, amount) {
-    const newTotal = user.balance - Number(amount);
-    // user.balance = newTotal;
-    console.log('newTotal' + newTotal);
+    const newBalance = user.balance - Number(amount);
+    //user.balance = newTotal;
+    console.log('newBalance' + newBalance);
     return new Promise ((resolve, reject) => {
         try{
             const customers = db
